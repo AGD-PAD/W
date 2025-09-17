@@ -1,0 +1,237 @@
+/* ========================================
+   PÁGINA INICIAL - INDEX
+   ======================================== */
+
+   @import url("geral.css");
+
+   /* ========================================
+      HERO BANNER
+      ======================================== */
+   
+   .banner {
+       height: 80vh;
+       position: relative;
+       overflow: hidden;
+       margin-top: 80px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       background: linear-gradient(135deg, var(--texto-escuro) 0%, #2a2a2a 100%);
+   }
+   
+   .slide {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       opacity: 0;
+       transition: opacity 1s ease-in-out;
+   }
+   
+   .slide.active {
+       opacity: 1;
+   }
+   
+   .content {
+       position: relative;
+       z-index: 2;
+       text-align: center;
+       max-width: 800px;
+       padding: 0 2rem;
+   }
+   
+   .hero-title {
+       font-size: 3.5rem;
+       font-weight: 700;
+       margin-bottom: 1rem;
+       background: linear-gradient(45deg, var(--cor-destaque), var(--cor-destaque-2));
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+       background-clip: text;
+       animation: fadeInUp 1s ease;
+   }
+   
+   .hero-subtitle {
+       font-size: 1.25rem;
+       margin-bottom: 2rem;
+       opacity: 0.9;
+       animation: fadeInUp 1s ease 0.3s both;
+       color: var(--texto-claro);
+   }
+   
+   .cta-image {
+       width: 180px;
+       height: auto;
+       margin-bottom: 2rem;
+       transition: transform 0.3s ease;
+       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+   }
+   
+   .cta-image:hover {
+       transform: scale(1.05);
+   }
+   
+   /* ========================================
+      CONTEÚDO PRINCIPAL
+      ======================================== */
+   
+   .main-content {
+       max-width: 1200px;
+       margin: 0 auto;
+       padding: 4rem 2rem;
+   }
+   
+   .section {
+       margin-bottom: 4rem;
+   }
+   
+   .section-title {
+       font-size: 2.5rem;
+       text-align: center;
+       margin-bottom: 3rem;
+       background: linear-gradient(45deg, var(--cor-destaque), var(--cor-destaque-2));
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+       background-clip: text;
+       font-weight: 600;
+   }
+   
+   .section p {
+       text-align: center;
+       font-size: 1.1rem;
+       max-width: 800px;
+       margin: 0 auto;
+       opacity: 0.9;
+       line-height: 1.7;
+   }
+   
+   /* ========================================
+      GALERIA DE MEMBROS
+      ======================================== */
+   
+   .gallery-preview {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+       gap: 2rem;
+       margin-top: 3rem;
+   }
+   
+   .gallery-item {
+       aspect-ratio: 16/9;
+       background-size: cover;
+       background-position: center;
+       border-radius: var(--border-radius);
+       overflow: hidden;
+       position: relative;
+       cursor: pointer;
+       transition: var(--transition);
+       display: flex;
+       align-items: flex-end;
+       box-shadow: var(--shadow-light);
+   }
+   
+   .gallery-item:hover {
+       transform: translateY(-8px) scale(1.02);
+       box-shadow: var(--shadow-heavy);
+   }
+   
+   .gallery-item::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       background: linear-gradient(transparent 40%, rgba(0, 0, 0, 0.7));
+       transition: var(--transition);
+   }
+   
+   .gallery-item:hover::before {
+       background: linear-gradient(transparent 20%, rgba(0, 0, 0, 0.8));
+   }
+   
+   .gallery-item-content {
+       width: 100%;
+       padding: 1.5rem;
+       position: relative;
+       z-index: 2;
+       color: var(--texto-claro);
+       text-align: center;
+       transform: translateY(10px);
+       transition: var(--transition);
+   }
+   
+   .gallery-item:hover .gallery-item-content {
+       transform: translateY(0);
+   }
+   
+   .gallery-item-content h3 {
+       font-size: 1.25rem;
+       font-weight: 600;
+       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+   }
+   
+   /* Cursors personalizados para cada membro */
+   .gallery-item.coelho {
+       cursor: url('docs/icons/fut.png') 16 16, pointer;
+   }
+   
+   .gallery-item.gomes {
+       cursor: url('docs/icons/volei.png') 16 16, pointer;
+   }
+   
+   .gallery-item.rita {
+       cursor: url('docs/icons/stick.png') 16 16, pointer;
+   }
+   
+   /* ========================================
+      ANIMAÇÕES
+      ======================================== */
+   
+   @keyframes fadeInUp {
+       from {
+           opacity: 0;
+           transform: translateY(30px);
+       }
+       to {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
+   
+   /* ========================================
+      RESPONSIVO
+      ======================================== */
+   
+   @media (max-width: 768px) {
+       .banner {
+           height: 60vh;
+           margin-top: 70px;
+       }
+       
+       .hero-title {
+           font-size: 2.5rem;
+       }
+       
+       .hero-subtitle {
+           font-size: 1.1rem;
+       }
+       
+       .cta-image {
+           width: 150px;
+       }
+       
+       .section-title {
+           font-size: 2rem;
+       }
+       
+       .gallery-preview {
+           grid-template-columns: 1fr;
+           gap: 1.5rem;
+       }
+       
+       .main-content {
+           padding: 2rem 1rem;
+       }
+   }

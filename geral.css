@@ -1,0 +1,210 @@
+/* ========================================
+   VARIÁVEIS GLOBAIS E RESET
+   ======================================== */
+
+   :root {
+    --cor-principal: #0fa681;
+    --cor-secundaria: #19d5a6;
+    --cor-destaque: #09fde5;
+    --cor-destaque-2: #74ffdc;
+    --texto-claro: #ffffff;
+    --texto-escuro: #151515;
+    --texto-cinzento: #666666;
+    --texto-cinzento-2: #888888;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Arial', sans-serif;
+    background: var(--texto-escuro);
+    color: var(--texto-claro);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   NAVEGAÇÃO
+   ======================================== */
+
+.nav-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(21, 21, 21, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: var(--transition);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--cor-destaque), var(--cor-destaque-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: var(--texto-claro);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    opacity: 0.9;
+}
+
+.nav-menu a:hover {
+    color: var(--cor-destaque);
+    opacity: 1;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, var(--cor-destaque), var(--cor-destaque-2));
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+    background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+    padding: 3rem 0 1rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    color: var(--texto-escuro);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.footer-section p,
+.footer-section a {
+    color: var(--texto-escuro);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    display: block;
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.footer-section a:hover {
+    opacity: 1;
+    color: var(--texto-claro);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid rgba(21, 21, 21, 0.2);
+    margin-top: 2rem;
+    color: var(--texto-escuro);
+    opacity: 0.7;
+}
+
+/* ========================================
+   UTILITÁRIOS
+   ======================================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(45deg, var(--cor-destaque), var(--cor-destaque-2));
+    color: var(--texto-claro);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* ========================================
+   RESPONSIVO
+   ======================================== */
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 1rem;
+    }
+    
+    .nav-menu {
+        gap: 1rem;
+    }
+    
+    .nav-menu a {
+        font-size: 0.9rem;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .footer-content {
+        padding: 0 1rem;
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
